@@ -20,7 +20,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    PrimaryA: require("../assets/fonts/Roboto-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -46,10 +46,11 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );
