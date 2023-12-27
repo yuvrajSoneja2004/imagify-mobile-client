@@ -1,8 +1,8 @@
-# Imagify - Chat with Fictional Characters using AI
 
 <p align="center">
   <img src="./assets/images/LOGO.png" alt="Imagify Logo" width="200" />
 </p>
+# Imagify - Chat with Fictional Characters using AI
 
 Welcome to Imagify, a React Native project that enables users to have interactive conversations with fictional characters powered by AI.
 
