@@ -23,3 +23,11 @@ Make sure you have the following installed on your machine:
 
    ```bash
    git clone https://github.com/yuvrajSoneja2004/imagify-mobile-client
+
+2. Navigate to the project directory:
+    ```bash
+    cd imagify
+
+2. Install dependencies using Yarn or npm::
+    ```bash
+    yarn install
