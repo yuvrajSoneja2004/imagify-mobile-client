@@ -7,26 +7,31 @@ import {
   TouchableOpacity,
   Image,
   useColorScheme,
+  ActivityIndicator,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import axios from "axios";
 import { Video } from "expo-av";
 import { DarkTheme } from "@react-navigation/native";
-import { MonoText } from "../components/StyledText";
+import { MonoText } from "../../components/StyledText";
+import { Link } from "expo-router";
+import { serverInstance } from "../../utils/axiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { text } = DarkTheme.colors;
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
       if (!email || !password) {
         alert("Please enter your email and password");
       }
       // Replace 'your-api-endpoint' with the actual API endpoint for login
       else {
-        const response = await axios.post("your-api-endpoint", {
+        const response = await serverInstance.post("/api/auth/login", {
           email,
           password,
         });
@@ -37,6 +42,8 @@ const Login = () => {
     } catch (error) {
       // Handle errors
       console.error("Login failed", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -81,7 +88,7 @@ const Login = () => {
               }}
             >
               <Image
-                source={require("../assets/images/LOGO.png")}
+                source={require("../../assets/images/LOGO.png")}
                 style={{ width: 242, height: 47 }}
               />
               <MonoText style={{ marginTop: 20, color: `${text}` }}>
@@ -167,8 +174,23 @@ const Login = () => {
               }}
               onPress={handleLogin}
             >
-              <Text style={{ color: "#fff", fontSize: 16 }}>Login</Text>
+              {isLoading ? (
+                <ActivityIndicator size={"small"} color={"#fff"} />
+              ) : (
+                <Text style={{ color: "#fff", fontSize: 16 }}>Login</Text>
+              )}
             </TouchableOpacity>
+            <View style={{ marginTop: 20 }}>
+              <Text style={{ color: text, textAlign: "center" }}>
+                Don't have an account?{" "}
+                <Link
+                  href={"/auth/register"}
+                  style={{ fontWeight: "bold", lineHeight: 23 }}
+                >
+                  Register here.
+                </Link>
+              </Text>
+            </View>
           </View>
         </View>
       </SafeAreaView>

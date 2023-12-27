@@ -7,7 +7,7 @@ import { Link } from "expo-router";
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Link href={"/login"}>
+      <Link href={"/auth/register"}>
         <Text style={styles.title}>Tab One</Text>
       </Link>
       <View
