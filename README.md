@@ -31,3 +31,5 @@ Make sure you have the following installed on your machine:
 2. Install dependencies using Yarn or npm::
     ```bash
     yarn install
+
+    orman
